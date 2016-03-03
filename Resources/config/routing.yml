@@ -1,0 +1,9 @@
+asf_scheduler_homepage:
+    path: /scheduler
+    defaults: { _controller: "ASFSchedulerBundle:Default:index" }
+    
+asf_scheduler_dvi_event:
+    resource: "@ASFSchedulerBundle/Resources/config/routing/company_event.yml" 
+    
+asf_scheduler_dvi_event_category:
+    resource: "@ASFSchedulerBundle/Resources/config/routing/company_event_category.yml"    

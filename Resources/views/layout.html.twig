@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {% block breadcrumbs_tree %}
+    {{ parent() }}
+    > <a href="{{ path('asf_scheduler_homepage') }}" title="{{ 'Scheduler'|trans }}">{{ 'Scheduler'|trans }}</a>
+    {% endblock %}
+    
+{% endblock %}

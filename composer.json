@@ -1,0 +1,37 @@
+{
+	"name" : "artscorestudio/scheduler-bundle",
+	"license" : "MIT",
+	"type" : "library",
+	"description" : "Scheduler Bundle is a Symfony 2/3 bundle for create and manage events in your Symfony 2/3 application. This package is a part of Artscore Studio Framework.",
+	"homepage" : "https://github.com/artscorestudio/scheduler-bundle",
+	"authors" : [{
+		"name" : "Nicolas Claverie",
+		"email" : "info@artscore-studio.fr"
+	}, {
+		"name" : "Artscore Studio",
+		"homepage" : "http://www.artscore-studio.fr"
+	}
+	],
+	"require" : {
+		"php": ">=5.5.9",
+        "symfony/framework-bundle": "~2.3|~3.0",
+        "sensio/framework-extra-bundle": "~2.3|~3.0",
+        "symfony/twig-bundle": "~2.3|~3.0",
+        "doctrine/orm": "~2.4|^2.5",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-cache-bundle": "~1.0|^1.2",
+        "twig/twig": "~1.10"
+	},
+	"require-dev" : {
+        "phpunit/phpunit": "5.1.*",
+        "mockery/mockery": "0.9.*",
+        "artscorestudio/core-bundle": "dev-master",
+        "apy/datagrid-bundle": "^2.2"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"ASF\\SchedulerBundle\\" : ""
+		}
+	},
+	"minimum-stability" : "dev"
+}

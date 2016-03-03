@@ -1,0 +1,58 @@
+{% extends 'ASFSchedulerBundle::layout.html.twig' %}
+
+{% block title %}
+    {% block asf_base_meta_title %}{{ 'Add New Event'|trans }}{% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block breadcrumbs_tree %}
+    	{{ parent() }}
+    	> <a href="{{ path('asf_scheduler_company_event_add') }}" title="{{ 'Add New Event'|trans }}">{{ 'Add New Event'|trans }}</a>
+    {% endblock %}
+    
+    {% block asf_cmd %}{% endblock %}
+    
+    {% block page_title %}{{ 'Add New Event'|trans }}{% endblock %}
+    
+    {% block content %}
+    	{{ form_start(form) }}
+    	{{ form_errors(form) }}
+    	
+    	<div class="row">
+    		<div class="form-group col-sm-6">
+    			{{ form_widget(form.title) }}
+    		</div>
+    		<div class="form-group col-sm-6">
+    			{{ form_widget(form.url) }}
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-sm-6">
+    			{{ form_widget(form.startedAt) }}
+    		</div>
+    		
+    		<div class="form-group col-sm-6">
+    			{{ form_widget(form.finishedAt) }}
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-sm-6">
+    			{{ form_widget(form.isAllDay) }}
+    		</div>
+    		
+    		<div class="form-group col-sm-6">
+    			{{ form_widget(form.category) }}
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="form-group col-sm-6">
+    			{{ form_widget(form.agent) }}
+    		</div>
+    	</div>
+    	
+    	<button type="submit" class="btn btn-primary">{{ 'Add'|trans }}</button> 
+    	
+    	{{ form_end(form) }}
+    {% endblock %}
+    
+{% endblock %}
