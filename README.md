@@ -1,10 +1,12 @@
 # Artscore Studio Scheduler bundle
 
-Scheduler Bundle is a Symfony 2/3 bundle for create and manage events in your Symfony 2+ application. This package is a part of Artscore Studio Framework.
+Scheduler Bundle is a Symfony 2/3 bundle for create and manage calendar events in your Symfony 2+ application. This package is a part of Artscore Studio Framework.
 
 > IMPORTANT NOTICE: This bundle is still under development. Any changes will be done without prior notice to consumers of this package. Of course this code will become stable at a certain point, but for now, use at your own risk.
 
-[![Build Status](https://travis-ci.org/artscorestudio/scheduler-bundle.svg?branch=master)](https://travis-ci.org/artscorestudio/scheduler-bundle)
+| [Master](https://github.com/artscorestudio/scheduler-bundle) | [Latest Release (1.0.0)](https://github.com/artscorestudio/scheduler-bundle/releases/tag/1.0.0) |
+| ------ | -------------- |
+| [![Build Status](https://travis-ci.org/artscorestudio/scheduler-bundle.svg?branch=master)](https://travis-ci.org/artscorestudio/scheduler-bundle) | [![Build Status](https://travis-ci.org/artscorestudio/scheduler-bundle.svg?branch=1.0.0)](https://travis-ci.org/artscorestudio/scheduler-bundle) |
 
 ## Documentation
 
