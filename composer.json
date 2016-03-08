@@ -14,22 +14,27 @@
 	],
 	"require" : {
 		"php": ">=5.3.9",
-        "symfony/framework-bundle": "~2.3|~3.0",
-        "sensio/framework-extra-bundle": "~2.3|~3.0",
-        "symfony/twig-bundle": "~2.3|~3.0",
-        "doctrine/orm": "~2.4|^2.5",
-        "doctrine/doctrine-bundle": "^1.6",
-        "doctrine/doctrine-cache-bundle": "~1.0|^1.2",
-        "twig/twig": "~1.10"
+	        "symfony/framework-bundle": "~2.3|~3.0",
+	        "sensio/framework-extra-bundle": "~2.3|~3.0",
+	        "symfony/twig-bundle": "~2.3|~3.0",
+	        "doctrine/orm": "~2.4|^2.5",
+	        "doctrine/doctrine-bundle": "^1.6",
+	        "doctrine/doctrine-cache-bundle": "~1.0|^1.2",
+	        "twig/twig": "~1.10"
 	},
 	"require-dev" : {
-        "mockery/mockery": "0.9.*",
-        "artscorestudio/core-bundle": "1.0.*",
-        "apy/datagrid-bundle": "^2.2"
+	        "mockery/mockery": "0.9.*",
+	        "artscorestudio/core-bundle": "1.0.*",
+	        "apy/datagrid-bundle": "^2.2"
 	},
 	"autoload" : {
 		"psr-4" : {
 			"ASF\\SchedulerBundle\\" : ""
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0.x-dev"
 		}
 	},
 	"minimum-stability" : "dev"
