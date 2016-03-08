@@ -24,7 +24,7 @@
 	},
 	"require-dev" : {
 	        "mockery/mockery": "0.9.*",
-	        "artscorestudio/core-bundle": "^1.0",
+	        "artscorestudio/core-bundle": "^1.0@dev",
 	        "apy/datagrid-bundle": "^2.2"
 	},
 	"autoload" : {
