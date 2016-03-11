@@ -7,12 +7,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace ASF\SchedulerBundle\Model\CompanyEventCategory;
+namespace ASF\SchedulerBundle\Model\CalendarEventCategory;
 
 /**
- * Company Event Category Interface
+ * Calendar Event Category Interface
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-interface CompanyEventCategoryInterface {}
+interface CalendarEventCategoryInterface {}

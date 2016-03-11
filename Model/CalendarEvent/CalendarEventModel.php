@@ -7,17 +7,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace ASF\SchedulerBundle\Model\CompanyEvent;
+namespace ASF\SchedulerBundle\Model\CalendarEvent;
 
-use ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface;
+use ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface;
 
 /**
- * Company Event Entity
+ * Calendar Event Entity
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-abstract class CompanyEventModel implements CompanyEventInterface
+abstract class CalendarEventModel implements CalendarEventInterface
 {
 	/**
 	 * Allowed states for CompanyEvent entity
@@ -48,14 +48,9 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	protected $url;
 	
 	/**
-	 * @var \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface
+	 * @var \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface
 	 */
 	protected $category;
-	
-	/**
-	 * @var \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventAgentInterface
-	 */
-	protected $agent;
 	
 	/**
 	 * @var boolean
@@ -81,7 +76,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getId()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::getId()
 	 */
 	public function getId()
 	{
@@ -90,7 +85,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getState()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::getState()
 	 */
 	public function getState()
 	{
@@ -99,7 +94,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::setState()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::setState()
 	 */
 	public function setState($state)
 	{
@@ -109,7 +104,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getTitle()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::getTitle()
 	 */
 	public function getTitle()
 	{
@@ -118,7 +113,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::setTitle()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::setTitle()
 	 */
 	public function setTitle($title)
 	{
@@ -128,7 +123,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getUrl()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::getUrl()
 	 */
 	public function getUrl()
 	{
@@ -137,7 +132,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::setUrl()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::setUrl()
 	 */
 	public function setUrl($url)
 	{
@@ -147,7 +142,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getCategory()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::getCategory()
 	 */
 	public function getCategory()
 	{
@@ -156,9 +151,9 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::setCategory()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::setCategory()
 	 */
-	public function setCategory(CompanyEventCategoryInterface $category)
+	public function setCategory(CalendarEventCategoryInterface $category)
 	{
 		$this->category = $category;
 		return $this;
@@ -166,26 +161,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getAgent()
-	 */
-	public function getAgent()
-	{
-		return $this->agent;
-	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::setAgent()
-	 */
-	public function setAgent(CompanyEventAgentInterface $agent)
-	{
-		$this->agent = $agent;
-		return $this;
-	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getStartedAt()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::getStartedAt()
 	 */
 	public function getStartedAt()
 	{
@@ -194,7 +170,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::setStartedAt()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::setStartedAt()
 	 */
 	public function setStartedAt(\DateTime $start_date)
 	{
@@ -204,7 +180,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getFinishedAt()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::getFinishedAt()
 	 */
 	public function getFinishedAt()
 	{
@@ -213,7 +189,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::setFinishedAt()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::setFinishedAt()
 	 */
 	public function setFinishedAt(\DateTime $end_date)
 	{
@@ -223,7 +199,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::getIsAllDay()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::getIsAllDay()
 	 */
 	public function getIsAllDay()
 	{
@@ -232,7 +208,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEvent\CompanyEventInterface::setIsAllDay()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::setIsAllDay()
 	 */
 	public function setIsAllDay($is_all_day)
 	{
@@ -241,7 +217,7 @@ abstract class CompanyEventModel implements CompanyEventInterface
 	}
 	
 	/**
-	 * Fired on prePersist Doctrine DVIEvent
+	 * Fired on prePersist Doctrine Event
 	 */
 	public function onPrePersist()
 	{

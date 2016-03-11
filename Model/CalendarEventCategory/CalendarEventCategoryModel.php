@@ -15,7 +15,7 @@ namespace ASF\SchedulerBundle\Model\CompanyEventCategory;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterface
+abstract class CalendarEventCategoryModel implements CompanyEventCategoryInterface
 {
 	/**
 	 * Allowed states for CompanyEvent entity
@@ -62,7 +62,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::getId()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::getId()
 	 */
 	public function getId()
 	{
@@ -71,7 +71,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::getState()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::getState()
 	 */
 	public function getState()
 	{
@@ -80,7 +80,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::setState()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::setState()
 	 */
 	public function setState($state)
 	{
@@ -90,7 +90,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::getTitle()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::getTitle()
 	 */
 	public function getTitle()
 	{
@@ -99,7 +99,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::setTitle()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::setTitle()
 	 */
 	public function setTitle($title)
 	{
@@ -109,7 +109,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::getBgColor()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::getBgColor()
 	 */
 	public function getBgColor()
 	{
@@ -118,7 +118,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::setBgColor()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::setBgColor()
 	 */
 	public function setBgColor($bg_color)
 	{
@@ -128,7 +128,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::getFgColor()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::getFgColor()
 	 */
 	public function getFgColor()
 	{
@@ -137,7 +137,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::setFgColor()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::setFgColor()
 	 */
 	public function setFgColor($fg_color)
 	{
@@ -147,7 +147,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::getCssClassName()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::getCssClassName()
 	 */
 	public function getCssClassName()
 	{
@@ -156,7 +156,7 @@ abstract class CompanyEventCategoryModel implements CompanyEventCategoryInterfac
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see \ASF\SchedulerBundle\Model\CompanyEventCategory\CompanyEventCategoryInterface::setCssClassName()
+	 * @see \ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryInterface::setCssClassName()
 	 */
 	public function setCssClassName($css_classname)
 	{
