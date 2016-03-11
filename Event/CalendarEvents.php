@@ -22,5 +22,12 @@ final class CalendarEvents
      *
      * @var string
      */
-    const CONFIGURE = 'asf_scheduler.calendar.load_events';
+    const LOAD_EVENTS = 'asf_scheduler.calendar.load_events';
+    
+    /**
+     * Action toolbar in calendar view
+     *
+     * @var string
+     */
+    const TOOLBAR = 'asf_scheduler.calendar.toolbar';
 }

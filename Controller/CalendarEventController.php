@@ -12,7 +12,9 @@ namespace ASF\SchedulerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use ASF\SchedulerBundle\Form\Type\CalendarEventFormType;
+use ASF\SchedulerBundle\Form\Type\CalendarEventType;
+use ASF\SchedulerBundle\Event\CalendarToolbarEvent;
+use ASF\SchedulerBundle\Event\CalendarEvents;
 
 /**
  * Calendar Event Controller
@@ -29,7 +31,12 @@ class CalendarEventController extends Controller
      */
     public function listAction()
     {
-        return $this->render('ASFSchedulerBundle:CalendarEvent:list.html.twig');
+        $buttons = array(); $event = new CalendarToolbarEvent($buttons);
+        $this->get('event_dispatcher')->dispatch(CalendarEvents::TOOLBAR, $event);
+        
+        return $this->render('ASFSchedulerBundle:CalendarEvent:list.html.twig', array(
+			'buttons' => $event->getButtons()
+		));
     }
     
 	/**
