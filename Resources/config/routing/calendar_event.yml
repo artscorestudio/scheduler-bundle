@@ -1,0 +1,13 @@
+asf_scheduler_calendar_event_list:
+    path: /admin/scheduler/calendar-event/list
+    defaults: { _controller: "ASFSchedulerBundle:CalendarEvent:list" }
+    
+asf_scheduler_calendar_event_add:
+    path: /admin/scheduler/calendar-event/add
+    defaults: { _controller: "ASFSchedulerBundle:CalendarEvent:add" }
+    
+asf_scheduler_calendar_event_edit:
+    path: /admin/scheduler/calendar-event/edit/{id}
+    defaults: { _controller: "ASFSchedulerBundle:CalendarEvent:edit" }
+    requirements:
+        id: \d+

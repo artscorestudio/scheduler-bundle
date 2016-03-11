@@ -1,0 +1,13 @@
+asf_scheduler_calendar_event_category_list:
+    path: /admin/calendar-event-category/list
+    defaults: { _controller: "ASFSchedulerBundle:CalendarEventCategory:list" }
+    
+asf_scheduler_calendar_event_category_add:
+    path: /admin/calendar-event-category/add
+    defaults: { _controller: "ASFSchedulerBundle:CalendarEventCategory:add" }
+    
+asf_scheduler_calendar_event_category_edit:
+    path: /admin/calendar-event-category/edit/{id}
+    defaults: { _controller: "ASFSchedulerBundle:CalendarEventCategory:edit" }
+    requirements:
+        id: \d+
