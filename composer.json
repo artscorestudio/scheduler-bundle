@@ -16,7 +16,7 @@
 		"php": ">=5.3.9",
 	    "symfony/framework-bundle": "~2.3|~3.0",
 	    "symfony/twig-bundle": "~2.3|~3.0",
-	    "twig/twig": "~1.10"
+	    "twig/twig": "~1.10",
 	    "moment/moment": "dev-master"
 	},
 	"require-dev" : {
