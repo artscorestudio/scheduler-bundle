@@ -44,6 +44,9 @@ class Configuration implements ConfigurationInterface
         		      ->append($this->addMomentParameterNode())
 		          ->end()
 		      ->end()
+		      
+		      ->append($this->addCalendarEventParameterNode())
+		      ->append($this->addCalendarEventCategoryParameterNode())
 		  ->end();
         
 		return $treeBuilder;
@@ -166,5 +169,73 @@ class Configuration implements ConfigurationInterface
             ->end();
     	    
         return $node;
+	}
+
+	/**
+	 * Add Calendar Event Entity Configuration
+	 */
+	protected function addCalendarEventParameterNode()
+	{
+	    $builder = new TreeBuilder();
+	    $node = $builder->root('calendar_event');
+	
+	    $node
+    	    ->treatTrueLike(array('form' => array('type' => "ASF\SchedulerBundle\Form\Type\CalendarEventType")))
+    	    ->treatFalseLike(array('form' => array('type' => "ASF\SchedulerBundle\Form\Type\CalendarEventType")))
+    	    ->addDefaultsIfNotSet()
+    	    ->children()
+        	    ->arrayNode('form')
+            	    ->addDefaultsIfNotSet()
+            	    ->children()
+                	    ->scalarNode('type')
+                	       ->defaultValue('ASF\SchedulerBundle\Form\Type\CalendarEventType')
+                	    ->end()
+                	    ->scalarNode('name')
+                	       ->defaultValue('calendar_event_type')
+                	    ->end()
+                	    ->arrayNode('validation_groups')
+                	       ->prototype('scalar')->end()
+                	       ->defaultValue(array("Default"))
+                	    ->end()
+            	    ->end()
+        	    ->end()
+    	    ->end()
+	    ;
+	
+	    return $node;
+	}
+	
+	/**
+	 * Add Calendar Event Category Entity Configuration
+	 */
+	protected function addCalendarEventCategoryParameterNode()
+	{
+	    $builder = new TreeBuilder();
+	    $node = $builder->root('calendar_event_category');
+	
+	    $node
+    	    ->treatTrueLike(array('form' => array('type' => "ASF\SchedulerBundle\Form\Type\CalendarEventCategoryType")))
+    	    ->treatFalseLike(array('form' => array('type' => "ASF\SchedulerBundle\Form\Type\CalendarEventCategoryType")))
+    	    ->addDefaultsIfNotSet()
+    	    ->children()
+        	    ->arrayNode('form')
+            	    ->addDefaultsIfNotSet()
+            	    ->children()
+                	    ->scalarNode('type')
+                	       ->defaultValue('ASF\SchedulerBundle\Form\Type\CalendarEventCategoryType')
+                	    ->end()
+                	    ->scalarNode('name')
+                	       ->defaultValue('calendar_event_category_type')
+                	    ->end()
+                	    ->arrayNode('validation_groups')
+                	       ->prototype('scalar')->end()
+                	       ->defaultValue(array("Default"))
+                	    ->end()
+                	->end()
+            	->end()
+    	    ->end()
+	    ;
+	
+	    return $node;
 	}
 }

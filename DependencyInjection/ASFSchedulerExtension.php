@@ -24,6 +24,24 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
  */
 class ASFSchedulerExtension extends Extension implements PrependExtensionInterface
 {
+    /**
+     * Maps parameters in container
+     *
+     * @param ContainerBuilder $container
+     * @param string $rootNodeName
+     * @param array $config
+     */
+    public function mapsParameters(ContainerBuilder $container, $rootNodeName, $config)
+    {
+        foreach($config as $name => $value) {
+            if ( is_array($value) ) {
+                $this->mapsParameters($container, $rootNodeName . '.' . $name, $value);
+            } else {
+                $container->setParameter($rootNodeName . '.' . $name, $value);
+            }
+        }
+    }
+    
 	/**
 	 * {@inheritDoc}
 	 * @see \Symfony\Component\DependencyInjection\Extension\ExtensionInterface::load()
@@ -32,16 +50,16 @@ class ASFSchedulerExtension extends Extension implements PrependExtensionInterfa
 	{
 		$configuration = new Configuration();
 		$config = $this->processConfiguration($configuration, $configs);
-        
+        $this->mapsParameters($container, $this->getAlias(), $config);
 		$loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 		
 		if ( $config['enable_twig_support'] == true ) {
 		    $container->setParameter('asf_scheduler.assets', $config['assets']);
 		}
 		
-		$loader->load('services/CompanyEvent.xml');
-		$loader->load('services/CompanyEventCategory.xml');
 		$loader->load('services/services.xml');
+		$loader->load('services/calendar_event.xml');
+		$loader->load('services/calendar_event_category.xml');
 	}
 	
 	/**
@@ -79,7 +97,7 @@ class ASFSchedulerExtension extends Extension implements PrependExtensionInterfa
             	    if ( $config['assets']['fullcalendar']['src_dir'] !== false ) {
             	        $container->prependExtensionConfig('assetic', array(
             	            'assets' => array(
-            	                'fullcalendar_js' => $config['assets']['fullcalendar']['src_dir'].'/'.$config['js'],
+            	                'fullcalendar_js' => $config['assets']['fullcalendar']['src_dir'].'/'.$config['assets']['fullcalendar']['js'],
             	                'fullcalendar_css' => $config['assets']['fullcalendar']['css'],
             	                'fullcalendar_lang_js' => $config['assets']['fullcalendar']['lang']
             	            )
