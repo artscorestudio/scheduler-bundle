@@ -1,0 +1,13 @@
+{% extends 'ASFSchedulerBundle::layout.html.twig' %}
+
+{% block title %}
+    {% block asf_base_meta_title %}{{ 'Edit %name%'|trans({'%name%': event.getTitle()}) }}{% endblock %}
+{% endblock %}
+
+{% block asf_scheduler_content %}
+
+    <h1>{{ 'Edit : %name%'|trans({'%name%': event.getTitle()}) }}</h1>
+
+    {{ form(form) }}
+    
+{% endblock %}

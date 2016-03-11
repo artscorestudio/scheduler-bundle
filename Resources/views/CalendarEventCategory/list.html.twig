@@ -1,0 +1,19 @@
+{% extends 'ASFSchedulerBundle::layout.html.twig' %}
+
+{% trans_default_domain 'asf_scheduler' %}
+
+{% block title %}{{ 'Calendar Category list'|trans }}{% endblock %}
+
+{% block asf_scheduler_content %}
+
+	<h1>{{ 'Calendar Category list'|trans }}</h1>
+
+	<a class="btn btn-default" href="{{ path('asf_scheduler_calendar_event_category_add') }}" title="{{ 'Add new category'|trans }}">{{ 'Add new categtory'|trans }}</a>
+
+	<div class="row">
+		<div class="col-xs-12">
+			{{ grid(grid) }}
+		</div>
+	</div>
+	
+{% endblock %}
