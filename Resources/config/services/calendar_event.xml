@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+	<parameters>
+	
+    	<!-- Calendar Event Manager -->
+		<parameter key="asf_scheduler.calendar_event.entity.class">ASF\SchedulerBundle\Entity\CalendarEvent</parameter>
+		
+		<!-- Form -->
+		<parameter key="asf_scheduler.form.type.calendar_event.class">ASF\SchedulerBundle\Form\Type\CalendarEventType</parameter>
+		
+    </parameters>
+
+    <services>
+        <!-- Entity Manager -->
+        <service id="asf_scheduler.calendar_event.manager" class="%asf_scheduler.entity.manager.class%">
+            <tag name="asf_core.manager" entity="%asf_scheduler.calendar_event.entity.class%" />
+        </service>
+        
+        <!-- Calendar Event Form -->
+        <service id="asf_scheduler.form.factory.calendar_event" class="%asf_scheduler.form.factory.class%">
+            <argument type="service" id="form.factory" />
+            <argument>%asf_scheduler.calendar_event.form.name%</argument>
+            <argument>%asf_scheduler.calendar_event.form.type%</argument>
+        </service>
+        
+        <service id="asf_scheduler.form.type.calendar_event" class="%asf_scheduler.form.type.calendar_event.class%">
+        	<argument type="service" id="asf_scheduler.calendar_event.manager" />
+			<tag name="form.type" alias="calendar_event_type" />
+		</service>
+        
+    </services>
+    
+</container>
