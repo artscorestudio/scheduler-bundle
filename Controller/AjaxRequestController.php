@@ -12,6 +12,7 @@ namespace ASF\SchedulerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+
 use ASF\SchedulerBundle\Event\CalendarEvents;
 use ASF\SchedulerBundle\Event\CalendarEvent;
 
@@ -21,7 +22,7 @@ use ASF\SchedulerBundle\Event\CalendarEvent;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class CalendarController extends Controller
+class AjaxRequestController extends Controller
 {
     /**
      * Ajax Request Load Events

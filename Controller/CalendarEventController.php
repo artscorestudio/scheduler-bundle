@@ -12,18 +12,28 @@ namespace ASF\SchedulerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use ASF\SchedulerBundle\Form\Type\CompanyEventFormType;
+use ASF\SchedulerBundle\Form\Type\CalendarEventFormType;
 
 /**
- * Company Event Controller
+ * Calendar Event Controller
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class CompanyEventController extends Controller
+class CalendarEventController extends Controller
 {
+    /**
+     * View all events
+     * 
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listAction()
+    {
+        return $this->render('ASFSchedulerBundle:CalendarEvent:list.html.twig');
+    }
+    
 	/**
-	 * Add Company Event
+	 * Add Calendar Event
 	 * 
 	 * @param Request $request
 	 * @return Symfony\Component\HttpFoundation\Response
@@ -34,35 +44,35 @@ class CompanyEventController extends Controller
 			throw $this->createAccessDeniedException();
 		}
 		
-		$event = $this->get('asf_scheduler.company_event.manager')->createInstance();
+		$event = $this->get('asf_scheduler.calendar_event.manager')->createInstance();
 		
-		$form = $this->createForm(CompanyEventFormType::class, $event);
+		$form = $this->createForm(CalendarEventFormType::class, $event);
 		$form->handleRequest($request);
 		
 		if ( $form->isSubmitted() && $form->isValid() ) {
 			
 			try {
-				$this->get('asf_scheduler.company_event.manager')->getEntityManager()->persist($event);
-				$this->get('asf_scheduler.company_event.manager')->getEntityManager()->flush();
+				$this->get('asf_scheduler.calendar_event.manager')->getEntityManager()->persist($event);
+				$this->get('asf_scheduler.calendar_event.manager')->getEntityManager()->flush();
 				
 				$this->get('asf_layout.flash_message')->success(sprintf('Your Calendar Event "%s" successfully saved.', $event->getTitle()));
-				$this->redirectToRoute('asf_scheduler_company_event_edit', array('id' => $event->getId()));
+				$this->redirectToRoute('asf_scheduler_calendar_event_edit', array('id' => $event->getId()));
 				
 			} catch (\Exception $e) {
 				$this->get('asf_layout.flash_message')->danger(sprintf('An error occured when creating an event : %s', $e->getMessage()));
 			}
 		}
 		
-		return $this->render('ASFSchedulerBundle:CompanyEvent:add.html.twig', array(
+		return $this->render('ASFSchedulerBundle:CalendarEvent:add.html.twig', array(
 			'form' => $form->createView()
 		));
 	}
 	
 	/**
-	 * Company Event edit
+	 * Calendar Event edit
 	 * 
 	 * @param Request $request
-	 * @param integer $id      ASFSchedulerBundle::CompanyEvent ID 
+	 * @param integer $id      ASFSchedulerBundle::CalendarEvent ID 
 	 */
 	public function editAction(Request $request, $id)
 	{
@@ -70,15 +80,15 @@ class CompanyEventController extends Controller
 			throw $this->createAccessDeniedException();
 		}
 		
-		$event = $this->get('asf_scheduler.company_event.manager')->getRepository()->findOneBy(array('id' => $id));
+		$event = $this->get('asf_scheduler.calendar_event.manager')->getRepository()->findOneBy(array('id' => $id));
 		
-		$form = $this->createForm(CompanyEventFormType::class, $event);
+		$form = $this->createForm(CalendarEventFormType::class, $event);
 		$form->handleRequest($request);
 		
 		if ( $form->isSubmitted() && $form->isValid() ) {
 				
 			try {
-				$this->get('asf_scheduler.company_event.manager')->flush();
+				$this->get('asf_scheduler.calendar_event.manager')->flush();
 				$this->get('asf_layout.flash_message')->success(sprintf('Your Calendar Event "%s" successfully saved.', $event->getName()));
 		
 			} catch (\Exception $e) {
@@ -86,7 +96,7 @@ class CompanyEventController extends Controller
 			}
 		}
 		
-		return $this->render('ASFSchedulerBundle:CompanyEvent:edit.html.twig', array(
+		return $this->render('ASFSchedulerBundle:CalendarEvent:edit.html.twig', array(
 			'form' => $form->createView(),
 			'event' => $event
 		));
