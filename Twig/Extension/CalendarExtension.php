@@ -49,8 +49,16 @@ class CalendarExtension extends \Twig_Extension
      */
     public function fullCalendarInitJs(\Twig_Environment $environment)
     {
+        $config = isset($this->assets['fullcalendar']['config']) ? $this->assets['fullcalendar']['config'] : array();
+        $config['eventSources'] = array(array(
+            'url' => "Routing.generate('".$this->assets['fullcalendar']['customize']['load_events_route']."')",
+            'type' => 'POST',
+            'data' => function(){},
+            'error' => function(){}
+        ));
+        
         return $environment->render('ASFSchedulerBundle:calendar:init_js.html.twig', array(
-            'calendar_config' => $this->assets['fullcalendar']['config'],
+            'calendar_config' => $config,
             'selector' => $this->assets['fullcalendar']['selector']
         ));
     }

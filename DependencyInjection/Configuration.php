@@ -60,14 +60,31 @@ class Configuration implements ConfigurationInterface
 	    $builder = new TreeBuilder();
 	    $node = $builder->root('fullcalendar');
 	    
+	    $config = array(
+	        'header' => array(
+                'left' => 'prev, next, today',
+                'center' => 'title',
+                'right' => 'month, agendaWeek, agendaDay'
+            ),
+            'defaultView' => 'agendaWeek',
+            'timezone' => 'Europe/Paris',
+            'timeFormat' => "H:mm",
+            'businessHours' => array(
+                'start' => '08:00',
+                'end' => '17:00',
+                'dow' => array(1,2,3,4,5)
+            )
+	    );
+	    
 	    $node
     	    ->treatTrueLike(array(
     	        'src_dir' => '%kernel.root_dir%/../vendor/fullcalendar/fullcalendar',
     	        'js' => "dist/fullcalendar.min.js",
     	        'css' => "dist/fullcalendar.min.css",
     	        'selector' => '#calendar-holder',
-    	        'config' => array(),
+    	        'config' => $config,
     	        'customize' => array(
+    	            'load_events_route' => 'asf_scheduler_fullcalendar_loader',
     	            'dest_dir' => '%kernel.root_dir%/../web/js/fullcalendar'
     	        )
     	    ))
@@ -79,8 +96,9 @@ class Configuration implements ConfigurationInterface
     	        'js' => "dist/fullcalendar.min.js",
     	        'css' => "dist/fullcalendar.min.css",
     	        'selector' => '#calendar-holder',
-    	        'config' => array(),
+    	        'config' => $config,
     	        'customize' => array(
+    	            'load_events_route' => 'asf_scheduler_fullcalendar_loader',
     	            'dest_dir' => '%kernel.root_dir%/../web/js/fullcalendar'
     	        )
     	    ))
@@ -106,13 +124,24 @@ class Configuration implements ConfigurationInterface
             	    ->cannotBeEmpty()
             	    ->defaultValue('#calendar-holder')
         	    ->end()
-        	    ->arrayNode('config')->end()
+        	    ->arrayNode('config')
+        	       ->fixXmlConfig('config')
+        	       ->prototype('scalar')->end()
+        	       ->defaultValue($config)
+        	    ->end()
         	    ->arrayNode('customize')
         	       ->addDefaultsIfNotSet()
         	       ->children()
             	       ->scalarNode('dest_dir')
                 	       ->cannotBeEmpty()
                 	       ->defaultValue('%kernel.root_dir%/../web/js/fullcalendar')
+            	       ->end()
+            	       ->arrayNode('exclude_files')
+                	       ->fixXmlConfig('exclude_files')
+                	       ->prototype('scalar')->end()
+            	       ->end()
+            	       ->scalarNode('load_events_route')
+            	           ->defaultValue('asf_scheduler_fullcalendar_loader')
             	       ->end()
         	       ->end()
         	    ->end()
@@ -132,7 +161,7 @@ class Configuration implements ConfigurationInterface
 	    $node
     	    ->treatTrueLike(array(
     	        'src_dir' => '%kernel.root_dir%/../vendor/moment/moment',
-    	        'js' => "moment.js",
+    	        'js' => "min/moment.min.js",
     	        'customize' => array(
     	            'dest_dir' => '%kernel.root_dir%/../web/js/moment',
     	        )
@@ -142,7 +171,7 @@ class Configuration implements ConfigurationInterface
     	    ))
     	    ->treatNullLike(array(
     	        'src_dir' => '%kernel.root_dir%/../vendor/moment/moment',
-    	        'js' => "moment.js",
+    	        'js' => "min/moment.min.js",
     	        'customize' => array(
     	            'dest_dir' => '%kernel.root_dir%/../web/js/moment',
     	        )
@@ -155,7 +184,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('js')
                     ->cannotBeEmpty()
-                    ->defaultValue('moment.js')
+                    ->defaultValue('min/moment.min.js')
                 ->end()
                 ->arrayNode('customize')
                     ->addDefaultsIfNotSet()
@@ -163,6 +192,10 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('dest_dir')
                             ->cannotBeEmpty()
                             ->defaultValue('%kernel.root_dir%/../web/js/moment')
+                        ->end()
+                        ->arrayNode('exclude_files')
+                            ->fixXmlConfig('exclude_files')
+                            ->prototype('scalar')->end()
                         ->end()
                     ->end()
                 ->end()

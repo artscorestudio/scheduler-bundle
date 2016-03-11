@@ -8,4 +8,10 @@ asf_scheduler_calendar_event:
     
 asf_scheduler_calendar_event_category:
     resource: "@ASFSchedulerBundle/Resources/config/routing/calendar_event_category.yml"
-    prefix: /admin/scheduler    
+    prefix: /admin/scheduler
+    
+asf_scheduler_fullcalendar_loader:
+    path: /admin/scheduler/load-calendar-events
+    defaults: { _controller: "ASFSchedulerBundle:AjaxRequest:loadCalendar" }
+    options:
+        expose: true

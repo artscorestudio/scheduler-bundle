@@ -98,8 +98,8 @@ class ASFSchedulerExtension extends Extension implements PrependExtensionInterfa
             	        $container->prependExtensionConfig('assetic', array(
             	            'assets' => array(
             	                'fullcalendar_js' => $config['assets']['fullcalendar']['src_dir'].'/'.$config['assets']['fullcalendar']['js'],
-            	                'fullcalendar_css' => $config['assets']['fullcalendar']['css'],
-            	                'fullcalendar_lang_js' => $config['assets']['fullcalendar']['lang']
+            	                'fullcalendar_css' => $config['assets']['fullcalendar']['src_dir'].'/'.$config['assets']['fullcalendar']['css'],
+            	                'fullcalendar_lang_js' => $config['assets']['fullcalendar']['src_dir'].'/'.$config['assets']['fullcalendar']['lang']
             	            )
             	        ));
             	    }
