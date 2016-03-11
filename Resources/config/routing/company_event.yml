@@ -1,9 +1,0 @@
-asf_scheduler_company_event_add:
-    path: /admin/scheduler/company-event/add
-    defaults: { _controller: "ASFSchedulerBundle:CompanyEvent:add" }
-    
-asf_scheduler_company_event_edit:
-    path: /admin/scheduler/company-event/edit/{id}
-    defaults: { _controller: "ASFSchedulerBundle:CompanyEvent:edit" }
-    requirements:
-        id: \d+

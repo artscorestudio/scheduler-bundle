@@ -11,12 +11,7 @@ namespace ASF\SchedulerBundle\Event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-use ADesigns\CalendarBundle\Event\CalendarEvent;
-use ADesigns\CalendarBundle\Entity\EventEntity;
-
 use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
-
-use ASF\BackendBundle\Event\CalendarEvents;
 
 /**
  * Calendar Subscriber
@@ -45,8 +40,8 @@ class CalendarSubscriber implements EventSubscriberInterface
 	public static function getSubscribedEvents()
 	{
 		return array(
-			CalendarEvent::CONFIGURE => array('onCalendarLoadEvents', 0),
-			CalendarEvents::CALENDAR_TOOLBAR => array('onCalendarToolbarEvent', 0)
+			CalendarEvents::CONFIGURE => array('onCalendarLoadEvents', 0),
+			//CalendarEvents::CALENDAR_TOOLBAR => array('onCalendarToolbarEvent', 0)
 		);
 	}
 	

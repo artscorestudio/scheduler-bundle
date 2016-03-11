@@ -1,9 +1,0 @@
-asf_backend_company_event_category_add:
-    path: /admin/company-event-category/add
-    defaults: { _controller: "ASFSchedulerBundle:CompanyEventCategory:add" }
-    
-asf_backend_company_event_category_edit:
-    path: /admin/company-event-category/edit/{id}
-    defaults: { _controller: "ASFSchedulerBundle:CompanyEventCategory:edit" }
-    requirements:
-        id: \d+

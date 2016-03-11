@@ -5,13 +5,25 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
 	<parameters>
+	
+		<!-- Generic Entity Manager -->
+    	<parameter key="asf_scheduler.entity.manager.class">ASF\SchedulerBundle\Entity\Manager\ASFSchedulerEntityManager</parameter>
+
+		<!-- Form Factory -->
+		<parameter key="asf_scheduler.form.factory.class">ASF\SchedulerBundle\Form\Factory\FormFactory</parameter>
+		
+		<!-- Listeners and Subscribers -->
 		<parameter key="asf_scheduler.calendar.subscriber.class">ASF\SchedulerBundle\Event\CalendarSubscriber</parameter>
+		
+		<!-- Twig -->
 		<parameter key="asf_scheduler.twig.calendar.class">ASF\SchedulerBundle\Twig\Extension\CalendarExtension</parameter>
+		
 	</parameters>
 	
 	<services>
+	
         <service id="asf_scheduler.calendar.subscriber" class="%asf_scheduler.calendar.subscriber.class%">
-        	<argument type="service" id="asf_scheduler.company_event.manager" />
+        	<argument type="service" id="asf_scheduler.calendar_event.manager" />
         	<tag name="kernel.event_subscriber" />
         </service>
         
@@ -19,6 +31,7 @@
         	<argument>%asf_scheduler.assets%</argument>
             <tag name="twig.extension" />
         </service>
+        
 	</services>
     
 </container>
