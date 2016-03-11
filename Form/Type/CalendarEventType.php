@@ -14,16 +14,32 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
 
 /**
- * Comapny Event Category Form
+ * Calendar Event Form
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-class CompanyEventCategoryFormType extends AbstractType
+class CalendarEventType extends AbstractType
 {
+    /**
+     * @var ASFEntityManagerInterface
+     */
+    protected $calendarEventManager;
+    
+    /**
+     * @param ASFEntityManagerInterface $calendarEventManager
+     */
+    public function __construct(ASFEntityManagerInterface $calendarEventManager)
+    {
+        $this->calendarEventManager = $calendarEventManager;
+    }
+    
 	/**
 	 * {@inheritDoc}
 	 * @see \Symfony\Component\Form\AbstractType::buildForm()
@@ -34,23 +50,30 @@ class CompanyEventCategoryFormType extends AbstractType
 			'label' => 'Event Title',
 			'required' => true
 		))
-		->add('bgColor', TextType::class, array(
-			'label' => 'Background color',
+		->add('url', TextType::class, array(
+			'label' => 'Event URL',
 			'required' => false
 		))
-		->add('fgColor', TextType::class, array(
-			'label' => 'Forground color',
+		->add('startedAt', DateTimeType::class, array(
+			'label' => 'Start date',
+			'required' => true
+		))
+		->add('finishedAt', DateTimeType::class, array(
+			'label' => 'End date',
+			'required' => true
+		))
+		->add('isAllDay', CheckboxType::class, array(
+			'label' => 'All day event',
 			'required' => false
 		))
-		->add('cssClassName', ChoiceType::class, array(
-			'label' => 'CSS class name',
-			'choices' => array(
-				'.event-cat-routes' => 'Routes',
-				'.event-cat-vert' => 'Espaces verts',
-				'.event-cat-repos' => 'Repos'
-			),
+		->add('category', SearchCalendarEventCategoryType::class);
+		
+		/*->add('agent', EntityType::class, array(
+			'class' => 'ASFContactBundle:Person',
+			'choice_label' => 'name',
+			'label' => 'Agent',
 			'required' => false
-		));
+		));*/
 	}
 	
 	/**
@@ -60,7 +83,7 @@ class CompanyEventCategoryFormType extends AbstractType
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'ASF\SchedulerBundle\Entity\DVIEventCategory',
+			'data_class' => $this->calendarManager->getClassName(),
 			'translation_domain' => 'asf_scheduler'
 		));
 	}
@@ -71,6 +94,6 @@ class CompanyEventCategoryFormType extends AbstractType
 	 */
 	public function getName()
 	{
-		return 'company_event_category_form';
+		return 'calendar_event_type';
 	}
 }
