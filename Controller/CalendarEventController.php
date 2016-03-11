@@ -53,7 +53,10 @@ class CalendarEventController extends Controller
 		
 		$event = $this->get('asf_scheduler.calendar_event.manager')->createInstance();
 		
-		$form = $this->createForm(CalendarEventFormType::class, $event);
+		$formFactory = $this->get('asf_scheduler.form.factory.calendar_event');
+		$form = $formFactory->createForm();
+		$form->setData($event);
+		
 		$form->handleRequest($request);
 		
 		if ( $form->isSubmitted() && $form->isValid() ) {
@@ -89,7 +92,10 @@ class CalendarEventController extends Controller
 		
 		$event = $this->get('asf_scheduler.calendar_event.manager')->getRepository()->findOneBy(array('id' => $id));
 		
-		$form = $this->createForm(CalendarEventFormType::class, $event);
+		$formFactory = $this->get('asf_scheduler.form.factory.calendar_event');
+		$form = $formFactory->createForm();
+		$form->setData($event);
+		
 		$form->handleRequest($request);
 		
 		if ( $form->isSubmitted() && $form->isValid() ) {

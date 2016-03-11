@@ -83,7 +83,7 @@ class CalendarEventType extends AbstractType
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => $this->calendarManager->getClassName(),
+			'data_class' => $this->calendarEventManager->getClassName(),
 			'translation_domain' => 'asf_scheduler'
 		));
 	}

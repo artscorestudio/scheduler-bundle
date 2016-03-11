@@ -38,7 +38,7 @@ class StringToEventCategoryTransformer implements DataTransformerInterface
 	 * (non-PHPdoc)
 	 * @see \Symfony\Component\Form\DataTransformerInterface::transform()
 	 */
-	public function transform($event)
+	public function transform($event_category)
 	{
 		if ( is_null($event_category) )
 			return '';

@@ -11,7 +11,8 @@
 		
 		<!-- Form -->
 		<parameter key="asf_scheduler.form.type.calendar_event_category.class">ASF\SchedulerBundle\Form\Type\CalendarEventCategoryType</parameter>
-	
+		<parameter key="asf_scheduler.form.type.search_calendar_event_category.class">ASF\SchedulerBundle\Form\Type\SearchCalendarEventCategoryType</parameter>
+		
     </parameters>
 
     <services>
@@ -32,6 +33,12 @@
         	<argument type="service" id="asf_scheduler.calendar_event_category.manager" />
 			<tag name="form.type" alias="calendar_event_category_type" />
 		</service>
+		
+		<!-- Search Event Form -->
+		<service id="asf_scheduler.form.type.search_calendar_event_category" class="%asf_scheduler.form.type.search_calendar_event_category.class%">
+        	<argument type="service" id="asf_scheduler.calendar_event_category.manager" />
+            <tag name="form.type" alias="search_product" />
+        </service>
 
     </services>
     

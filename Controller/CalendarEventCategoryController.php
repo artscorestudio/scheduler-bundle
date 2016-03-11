@@ -99,7 +99,10 @@ class CalendarEventCategoryController extends Controller
 		
 		$cat_event = $this->get('asf_scheduler.calendar_event_category.manager')->createInstance();
 		
-		$form = $this->createForm(CalendarEventCategoryFormType::class, $cat_event);
+		$formFactory = $this->get('asf_scheduler.form.factory.calendar_event_category');
+		$form = $formFactory->createForm();
+		$form->setData($cat_event);
+		
 		$form->handleRequest($request);
 		
 		if ( $form->isSubmitted() && $form->isValid() ) {
@@ -135,7 +138,10 @@ class CalendarEventCategoryController extends Controller
 		
 		$cat_event = $this->get('asf_scheduler.calendar_event_category..manager')->getRepository()->findOneBy(array('id' => $id));
 		
-		$form = $this->createForm(CalendarEventCategoryFormType::class, $cat_event);
+		$formFactory = $this->get('asf_scheduler.form.factory.calendar_event_category');
+		$form = $formFactory->createForm();
+		$form->setData($cat_event);
+		
 		$form->handleRequest($request);
 		
 		if ( $form->isSubmitted() && $form->isValid() ) {

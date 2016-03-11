@@ -7,7 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace ASF\SchedulerBundle\Model\CompanyEventCategory;
+namespace ASF\SchedulerBundle\Model\CalendarEventCategory;
 
 /**
  * Company Event Entity
@@ -15,7 +15,7 @@ namespace ASF\SchedulerBundle\Model\CompanyEventCategory;
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-abstract class CalendarEventCategoryModel implements CompanyEventCategoryInterface
+abstract class CalendarEventCategoryModel implements CalendarEventCategoryInterface
 {
 	/**
 	 * Allowed states for CompanyEvent entity
