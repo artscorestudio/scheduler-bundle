@@ -1,5 +1,8 @@
 {% extends 'ASFSchedulerBundle::layout.html.twig' %}
 
 {% block asf_scheduler_content %}
+
+	<a class="btn btn-default" href="{{ path('asf_scheduler_calendar_event_add') }}" title="{{ 'Add new event'|trans }}">{{ 'Add new event'|trans }}</a>
+
 	<div id="calendar-holder"></div>    
 {% endblock %}
