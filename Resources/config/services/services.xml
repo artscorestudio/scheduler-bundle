@@ -6,12 +6,18 @@
 
 	<parameters>
 		<parameter key="asf_scheduler.calendar.subscriber.class">ASF\SchedulerBundle\Event\CalendarSubscriber</parameter>
+		<parameter key="asf_scheduler.twig.calendar.class">ASF\SchedulerBundle\Twig\Extension\CalendarExtension</parameter>
 	</parameters>
 	
 	<services>
         <service id="asf_scheduler.calendar.subscriber" class="%asf_scheduler.calendar.subscriber.class%">
         	<argument type="service" id="asf_scheduler.company_event.manager" />
         	<tag name="kernel.event_subscriber" />
+        </service>
+        
+        <service id="asf_scheduler.twig.calendar" class="%asf_scheduler.twig.calendar.class%">
+        	<argument>%asf_scheduler.assets%</argument>
+            <tag name="twig.extension" />
         </service>
 	</services>
     
