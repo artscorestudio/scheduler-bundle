@@ -7,7 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace ASF\LayoutBundle\Composer;
+namespace ASF\SchedulerBundle\Composer;
 
 use Composer\Script\CommandEvent;
 use Symfony\Component\Process\Process;
