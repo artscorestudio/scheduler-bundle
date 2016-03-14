@@ -1,18 +1,24 @@
 {% extends "ASFSchedulerBundle::layout.html.twig" %}
 
+{% trans_default_domain 'asf_scheduler' %}
+
 {% block asf_scheduler_content %}
 
 	{% block asf_scheduler_heading %}
 	<div class="jumbotron">
-		<h1>{% block heading_title %}Scheduler Manager{% endblock %}</h1>
-		<p class="lead">{% block heading_lead %}Welcome in the scheduler manager section of your Symfony Application.{% endblock %}</p>
+		<h1>{% block heading_title %}{{ 'Scheduler Manager'|trans }}{% endblock %}</h1>
+		<p class="lead">{% block heading_lead %}{{ "Welcome in the scheduler manager section of your Symfony Application."|trans }}{% endblock %}</p>
 	</div>
 	{% endblock %}
 	
 	<div class="row marketing">
 		<div class="col-lg-6">
-			<h4>Calendar Event Manager</h4>
-			<p>You can create, update or delete calendar events from the <a href="{{ path('asf_scheduler_calendar_event_list') }}" title="Calendar Event list">calendar event list</a>.</p>
+			<h4>{{ 'Manage Calendar Events'|trans }}</h4>
+			<p>{{ 'events_text'|trans({'%url%': path('asf_scheduler_calendar_event_list')})|raw }}</p>
+		</div>
+		<div class="col-lg-6">
+			<h4>{{ 'Manage Calendar Events Categories'|trans }}</h4>
+			<p>{{ 'categories_text'|trans({'%url%': path('asf_scheduler_calendar_event_category_list')})|raw }}</p>
 		</div>
 	</div>
 	

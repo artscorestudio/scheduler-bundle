@@ -1,0 +1,16 @@
+# Commons
+Scheduler: "Planning"
+Calendar: "Calendrier"
+Scheduler Manager: "Gestionnaire de planning"
+
+# Homepage
+"Welcome in the scheduler manager section of your Symfony Application.": "Bienvenue dans votre gestionnaire de planning."
+Manage Calendar Events: "Gérer les évènements"
+Manage Calendar Events Categories: "Gérer les catégories d'évènements"
+events_text: Vous pouvez créer, mettre à jour ou supprimer des évènements à partir du <a href="%url%" title="Calendar Event list">calendrier</a>.
+categories_text: Vous pouvez créer, mettre à jour ou supprimer des catégories d'évènements à partir de la <a href="%url%" title="Liste des catégories">liste des catégories</a>.
+
+# Event
+Add New Event: "Ajouter un évènement"
+Events: "Évènements"
+Categories list: "Liste des catégories"
