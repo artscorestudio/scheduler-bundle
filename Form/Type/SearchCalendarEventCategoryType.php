@@ -57,9 +57,9 @@ class SearchCalendarEventCategoryType extends AbstractType
 		$resolver->setDefaults(array(
 		    'label' => 'Calendar Event Category',
 			'class' => $this->eventCategoryManager->getClassName(),
-		    'choice_label' => 'name',
+		    'choice_label' => 'title',
 		    'placeholder' => 'Choose a category',
-		    'attr' => array('class' => 'select2-entity-ajax', 'data-route' => 'asf_scheduler_ajax_request_calendar_event_cat_by_name')
+		    'attr' => array('class' => 'select2-entity')
 		));
 	}
 	
