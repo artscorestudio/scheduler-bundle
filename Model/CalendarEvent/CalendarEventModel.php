@@ -225,4 +225,47 @@ abstract class CalendarEventModel implements CalendarEventInterface
 			throw new \Exception('You must specify an end date for the event or define it on all day.');
 		}
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface::toArray()
+	 */
+	public function toArray()
+	{
+		$event = array();
+		
+        if ( !is_null($this->id) ) {
+            $event['id'] = $this->id;
+        }
+        
+        $event['title'] = $this->title;
+        $event['start'] = $this->startedAt->format("Y-m-d\TH:i:sP");
+        
+        if ( !is_null($this->url) ) {
+            $event['url'] = $this->url;
+        }
+        
+        if ( !is_null($this->category) ) {
+	        if ( !is_null($this->category->getBgColor()) ) {
+	            $event['backgroundColor'] = $this->category->getBgColor();
+	            $event['borderColor'] = $this->category->getBgColor();
+	        }
+	        
+	        if ( !is_null($this->category->getFgColor()) ) {
+	            $event['textColor'] = $this->category->getFgColor();
+	        }
+	        
+	        if ( !is_null($this->category->getCssClassName()) ) {
+	            $event['className'] = $this->category->getCssClassName();
+	        }
+        }
+        
+        if ( !is_null($this->finishedAt)) {
+            $event['end'] = $this->finishedAt->format("Y-m-d\TH:i:sP");
+        }
+        
+        $event['allDay'] = $this->isAllDay;
+
+        return $event;
+	}
 }

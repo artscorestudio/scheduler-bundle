@@ -29,4 +29,11 @@ interface CalendarEventInterface
 	 * @return \ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface
 	 */
 	public function setCategory(CalendarEventCategoryInterface $category);
+	
+	/**
+	 * This method must return the event in array format
+	 * 
+	 * @return Array
+	 */
+	public function toArray();
 }
