@@ -50,10 +50,6 @@ class CalendarEventType extends AbstractType
 			'label' => 'Event Title',
 			'required' => true
 		))
-		->add('url', TextType::class, array(
-			'label' => 'Event URL (optional)',
-			'required' => false
-		))
 		->add('startedAt', DatePickerType::class, array(
 			'label' => 'Start date',
 			'required' => true,
