@@ -29,6 +29,7 @@
         
         <service id="asf_scheduler.twig.calendar" class="%asf_scheduler.twig.calendar.class%">
         	<argument>%asf_scheduler.assets%</argument>
+        	<argument type="service" id="router" />
             <tag name="twig.extension" />
         </service>
         
