@@ -1,5 +1,9 @@
 {% extends 'ASFSchedulerBundle::layout.html.twig' %}
 
+{% trans_default_domain 'asf_scheduler' %}
+
+{% block title %}{{ 'Add New Event'|trans }}{% endblock %}
+
 {% block asf_scheduler_content %}
 
     <h1>{{ 'Add New Event'|trans }}</h1>

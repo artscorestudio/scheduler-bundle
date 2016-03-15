@@ -1,8 +1,8 @@
 {% extends 'ASFSchedulerBundle::layout.html.twig' %}
 
-{% block title %}
-    {% block asf_base_meta_title %}{{ 'Edit %name%'|trans({'%name%': event.getTitle()}) }}{% endblock %}
-{% endblock %}
+{% trans_default_domain 'asf_scheduler' %}
+
+{% block title %}{{ 'Edit %name%'|trans({'%name%': event.getTitle()}) }}{% endblock %}
 
 {% block asf_scheduler_content %}
 

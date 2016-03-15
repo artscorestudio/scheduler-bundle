@@ -14,3 +14,20 @@ categories_text: Vous pouvez créer, mettre à jour ou supprimer des catégories
 Add New Event: "Ajouter un évènement"
 Events: "Évènements"
 Categories list: "Liste des catégories"
+'Edit %name%': 'Edition : %name'
+Event Title: "Titre"
+'Event URL (optional)': "URL (optionnel)"
+Start date: "Date de début"
+End date: "Date de fin"
+All day event: "Toutes la journée"
+Calendar Event Category: "Catégorie" 
+Choose a category: "Choisir une catégorie"
+
+# Event Category
+Calendar Category list: Liste des catégories
+Add new category: Ajouter une catégorie
+No category was found.: Pas de catégorie trouvée.
+'Edit: %name%': "Edition : %name%"
+Background color: "Couleur d'arrière plan"
+Foreground color: "Couleur du texte"
+CSS class name: "Classe CSS"

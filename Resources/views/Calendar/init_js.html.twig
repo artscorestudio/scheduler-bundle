@@ -1,6 +1,11 @@
 <script type="text/javascript">
 (function($, window, document) {
 	$(function() {
+		var date = new Date();
+	    var d = date.getDate();
+	    var m = date.getMonth();
+	    var y = date.getFullYear();
+	    
     	$("{{ selector }}").fullCalendar({{ calendar_config|json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw }});
 	});
 }(window.jQuery, window, document));
