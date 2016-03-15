@@ -12,12 +12,12 @@ namespace ASF\SchedulerBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
+use ASF\LayoutBundle\Form\Type\DatePickerType;
 
 /**
  * Calendar Event Form
@@ -51,29 +51,22 @@ class CalendarEventType extends AbstractType
 			'required' => true
 		))
 		->add('url', TextType::class, array(
-			'label' => 'Event URL',
+			'label' => 'Event URL (optional)',
 			'required' => false
 		))
-		->add('startedAt', DateTimeType::class, array(
+		->add('startedAt', DatePickerType::class, array(
 			'label' => 'Start date',
-			'required' => true
+			'required' => true,
 		))
-		->add('finishedAt', DateTimeType::class, array(
+		->add('finishedAt', DatePickerType::class, array(
 			'label' => 'End date',
-			'required' => true
+			'required' => true,
 		))
 		->add('isAllDay', CheckboxType::class, array(
 			'label' => 'All day event',
 			'required' => false
 		))
 		->add('category', SearchCalendarEventCategoryType::class);
-		
-		/*->add('agent', EntityType::class, array(
-			'class' => 'ASFContactBundle:Person',
-			'choice_label' => 'name',
-			'label' => 'Agent',
-			'required' => false
-		));*/
 	}
 	
 	/**
