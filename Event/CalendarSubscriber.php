@@ -23,14 +23,14 @@ class CalendarSubscriber implements EventSubscriberInterface
 	/**
 	 * @var ASFEntityManagerInterface
 	 */
-	protected $companyEventManager;
+	protected $eventEntityManager;
 	
 	/**
-	 * @param ASFEntityManagerInterface $company_event_manager
+	 * @param ASFEntityManagerInterface $eventEntityManager
 	 */
-	public function __construct(ASFEntityManagerInterface $company_event_manager)
+	public function __construct(ASFEntityManagerInterface $eventEntityManager)
 	{
-		$this->companyEventManager = $company_event_manager;
+		$this->eventEntityManager = $eventEntityManager;
 	}
 	
 	/**
@@ -55,7 +55,7 @@ class CalendarSubscriber implements EventSubscriberInterface
 		$filter = $request->get('filter');
 		
 		// Get DVI Events
-		$company_events = $this->companyEventManager->getRepository()
+		$company_events = $this->eventEntityManager->getRepository()
 			->createQueryBuilder('e')
 			->where('e.startedAt BETWEEN :startDate AND :endDate')
 			->setParameter('startDate', $start_date->format('Y-m-d H:i:s'))
@@ -64,19 +64,7 @@ class CalendarSubscriber implements EventSubscriberInterface
 		
 		// Create Calendar Events
 		foreach($company_events as $company_event){
-			if ( $company_event->getIsAllDay() === false ) {
-				$eventEntity = new EventEntity($company_event->getTitle(), $company_event->getStartedAt(), $dvi_event->getFinishedAt());
-			} else {
-				$eventEntity = new EventEntity($company_event->getTitle(), $company_event->getStartedAt(), null, true);
-			}
-			
-			if ( !is_null($company_event->getCategory()) ) {
-				$eventEntity->setBgColor($company_event->getCategory()->getBgColor());
-				$eventEntity->setFgColor($company_event->getCategory()->getFgColor());
-				$eventEntity->setCssClass($company_event->getCategory()->getCssClassName());
-			}
-			
-			$calendar_event->addEvent($eventEntity);
+			$calendar_event->addEvent($company_event);
 		}
 	}
 	
