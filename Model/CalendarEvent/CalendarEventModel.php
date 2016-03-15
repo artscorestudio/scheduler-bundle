@@ -71,7 +71,7 @@ abstract class CalendarEventModel implements CalendarEventInterface
 	{
 		$this->startedAt = new \DateTime();
 		$this->isAllDay = false;
-		$this->state = self::STATE_DISABLED;
+		$this->state = self::STATE_ENABLED;
 	}
 	
 	/**
