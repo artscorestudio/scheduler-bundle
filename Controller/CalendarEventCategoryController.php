@@ -69,9 +69,9 @@ class CalendarEventCategoryController extends Controller
                 CalendarEventCategoryModel::STATE_DISABLED => $this->get('translator')->trans('Disabled', array(), 'asf_scheduler')
             ));
         
-        $grid->getColumn('bgColor')->setSize(100)->setTitle($this->get('translator')->trans('Background Color', array(), 'asf_scheduler'));
-        $grid->getColumn('fgColor')->setSize(100)->setTitle($this->get('translator')->trans('Foreground Color', array(), 'asf_scheduler'));
-        $grid->getColumn('cssClassName')->setSize(100)->setTitle($this->get('translator')->trans('CSS Class name', array(), 'asf_scheduler'));
+        $grid->getColumn('bgColor')->setSize(100)->setTitle($this->get('translator')->trans('Background color', array(), 'asf_scheduler'));
+        $grid->getColumn('fgColor')->setSize(100)->setTitle($this->get('translator')->trans('Foreground color', array(), 'asf_scheduler'));
+        $grid->getColumn('cssClassName')->setSize(100)->setTitle($this->get('translator')->trans('CSS class name', array(), 'asf_scheduler'));
 
         $editAction = new RowAction('btn_edit', 'asf_scheduler_calendar_event_category_edit');
         $editAction->setRouteParameters(array('id'));
@@ -113,11 +113,11 @@ class CalendarEventCategoryController extends Controller
 				$this->get('asf_scheduler.calendar_event_category.manager')->getEntityManager()->persist($cat_event);
 				$this->get('asf_scheduler.calendar_event_category.manager')->getEntityManager()->flush();
 				
-				$this->get('asf_layout.flash_message')->success(sprintf('Your Event Category "%s" successfully saved.', $cat_event->getTitle()));
-				$this->redirectToRoute('asf_scheduler_calendar_event_category_edit', array('id' => $event->getId()));
+				$this->get('asf_layout.flash_message')->success($this->get('translator')->trans('The Event Category "%name%" successfully saved.', array('%name%' => $cat_event->getTitle(), 'asf_scheduler')));
+				$this->redirectToRoute('asf_scheduler_calendar_event_category_edit', array('id' => $cat_event->getId()));
 				
 			} catch (\Exception $e) {
-				$this->get('asf_layout.flash_message')->danger(sprintf('An error occured when creating an event : %s', $e->getMessage()));
+				$this->get('asf_layout.flash_message')->danger($this->get('translator')->trans('An error occured when creating an event category : %msg%', array('%msg%' => $e->getMessage())));
 			}
 		}
 		

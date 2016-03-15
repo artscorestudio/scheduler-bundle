@@ -58,7 +58,10 @@ class CalendarEventCategoryType extends AbstractType
 		))
 		->add('cssClassName', ChoiceType::class, array(
 			'label' => 'CSS class name',
-			'required' => false
+			'required' => false,
+			'choices' => array(
+				'Blue' => '.blue-event'
+			)
 		));
 	}
 	

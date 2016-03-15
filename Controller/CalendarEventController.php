@@ -91,7 +91,7 @@ class CalendarEventController extends Controller
 		}
 		
 		$event = $this->get('asf_scheduler.calendar_event.manager')->getRepository()->findOneBy(array('id' => $id));
-		
+
 		$formFactory = $this->get('asf_scheduler.form.factory.calendar_event');
 		$form = $formFactory->createForm();
 		$form->setData($event);
