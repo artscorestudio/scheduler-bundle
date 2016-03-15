@@ -12,8 +12,10 @@ namespace ASF\SchedulerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use ASF\SchedulerBundle\Form\Type\CompanyEventCategoryFormType;
-use ASF\SchedulerBundle\Model\CompanyEventCategory\CalendarEventCategoryModel;
+use APY\DataGridBundle\Grid\Action\RowAction;
+use APY\DataGridBundle\Grid\Source\Entity;
+
+use ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryModel;
 
 /**
  * Company Event Category Controller
@@ -54,7 +56,7 @@ class CalendarEventCategoryController extends Controller
         $grid->setId('asf_calendar_event_category_list');
 
         // Columns configuration
-        $grid->hideColumns(array('id', 'title', 'bgColor', 'fgColor', 'cssClassName'));
+        $grid->hideColumns(array('id'));
 
         $grid->getColumn('title')->setTitle($this->get('translator')->trans('Category name', array(), 'asf_scheduler'))
             ->setDefaultOperator('like')
@@ -136,7 +138,7 @@ class CalendarEventCategoryController extends Controller
 			throw $this->createAccessDeniedException();
 		}
 		
-		$cat_event = $this->get('asf_scheduler.calendar_event_category..manager')->getRepository()->findOneBy(array('id' => $id));
+		$cat_event = $this->get('asf_scheduler.calendar_event_category.manager')->getRepository()->findOneBy(array('id' => $id));
 		
 		$formFactory = $this->get('asf_scheduler.form.factory.calendar_event_category');
 		$form = $formFactory->createForm();
