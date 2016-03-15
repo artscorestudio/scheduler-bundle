@@ -2,6 +2,9 @@
 Scheduler: "Planning"
 Calendar: "Calendrier"
 Scheduler Manager: "Gestionnaire de planning"
+State: Etat
+Enabled: Activé
+Disabled: Désactivé
 
 # Homepage
 "Welcome in the scheduler manager section of your Symfony Application.": "Bienvenue dans votre gestionnaire de planning."
@@ -28,6 +31,9 @@ Calendar Category list: Liste des catégories
 Add new category: Ajouter une catégorie
 No category was found.: Pas de catégorie trouvée.
 'Edit: %name%': "Edition : %name%"
+Category name: "Nom"
 Background color: "Couleur d'arrière plan"
 Foreground color: "Couleur du texte"
 CSS class name: "Classe CSS"
+'The Event Category "%name%" successfully saved.': 'La catégorie "%name% a bien été créée.'
+'An error occured when creating an event category: %msg%': "Une erreur est survenue : %msg%"
