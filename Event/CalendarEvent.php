@@ -12,6 +12,7 @@ namespace ASF\SchedulerBundle\Event;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Collections\ArrayCollection;
+use ASF\SchedulerBundle\Model\CalendarEvent\CalendarEventInterface;
 
 /**
  * Calendar Event
@@ -64,10 +65,10 @@ class CalendarEvent extends Event
     /**
      * If the event isn't already in the list, add it
      * 
-     * @param EventEntity $event
+     * @param CalendarEventInterface $event
      * @return CalendarEvent $this
      */
-    public function addEvent(EventEntity $event)
+    public function addEvent(CalendarEventInterface $event)
     {
         if ( !$this->events->contains($event) ) {
             $this->events->add($event);
