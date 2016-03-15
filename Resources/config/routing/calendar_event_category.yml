@@ -11,3 +11,9 @@ asf_scheduler_calendar_event_category_edit:
     defaults: { _controller: "ASFSchedulerBundle:CalendarEventCategory:edit" }
     requirements:
         id: \d+
+        
+asf_scheduler_calendar_event_category_delete:
+    path: /admin/calendar-event-category/delete/{id}
+    defaults: { _controller: "ASFSchedulerBundle:CalendarEventCategory:delete" }
+    requirements:
+        id: \d+

@@ -16,6 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
+use ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryModel;
 
 /**
  * Calendar Event Category Form
@@ -61,6 +62,13 @@ class CalendarEventCategoryType extends AbstractType
 			'required' => false,
 			'choices' => array(
 				'Blue' => '.blue-event'
+			)
+		))->add('state', ChoiceType::class, array(
+			'label' => 'State',
+			'required' => true,
+			'choices' => array(
+				'Enabled' => CalendarEventCategoryModel::STATE_ENABLED,
+				'Disabled' => CalendarEventCategoryModel::STATE_DISABLED
 			)
 		));
 	}

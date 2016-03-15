@@ -77,9 +77,9 @@ class CalendarEventCategoryController extends Controller
         $editAction->setRouteParameters(array('id'));
         $grid->addRowAction($editAction);
 
-        $deleteAction = new RowAction('btn_delete', 'asf_scheduler_calendar_event_category_edit', true);
+        $deleteAction = new RowAction('btn_delete', 'asf_scheduler_calendar_event_category_delete', true);
         $deleteAction->setRouteParameters(array('id'))
-            ->setConfirmMessage($this->get('translator')->trans('Do you want to delete this category ?', array(), 'asf_scheduler'));
+            ->setConfirmMessage($this->get('translator')->trans('Do you want to delete this category?', array(), 'asf_scheduler'));
         $grid->addRowAction($deleteAction);
 
         $grid->setNoDataMessage($this->get('translator')->trans('No category was found.', array(), 'asf_scheduler'));
@@ -114,10 +114,10 @@ class CalendarEventCategoryController extends Controller
 				$this->get('asf_scheduler.calendar_event_category.manager')->getEntityManager()->flush();
 				
 				$this->get('asf_layout.flash_message')->success($this->get('translator')->trans('The Event Category "%name%" successfully saved.', array('%name%' => $cat_event->getTitle(), 'asf_scheduler')));
-				$this->redirectToRoute('asf_scheduler_calendar_event_category_edit', array('id' => $cat_event->getId()));
+				return $this->redirectToRoute('asf_scheduler_calendar_event_category_edit', array('id' => $cat_event->getId()));
 				
 			} catch (\Exception $e) {
-				$this->get('asf_layout.flash_message')->danger($this->get('translator')->trans('An error occured when creating an event category : %msg%', array('%msg%' => $e->getMessage())));
+				$this->get('asf_layout.flash_message')->danger($this->get('translator')->trans('An error occured when creating an event category: %msg%', array('%msg%' => $e->getMessage())));
 			}
 		}
 		
@@ -149,11 +149,14 @@ class CalendarEventCategoryController extends Controller
 		if ( $form->isSubmitted() && $form->isValid() ) {
 				
 			try {
-				$this->get('asf_scheduler.calendar_event_category.manager')->flush();
-				$this->get('asf_layout.flash_message')->success(sprintf('Your Event Category "%s" successfully saved.', $cat_event->getTitle()));
-		
+				$this->get('asf_scheduler.calendar_event_category.manager')->getEntityManager()->flush();
+				if ( $this->has('asf_layout.flash_message') ) {
+					$this->get('asf_layout.flash_message')->success($this->get('translator')->trans('The Event Category "%name%" successfully saved.', array('%name%' => $cat_event->getTitle(), 'asf_scheduler')));
+				}
 			} catch (\Exception $e) {
-				$this->get('asf_layout.flash_message')->danger(sprintf('An error occured when creating an event : %s', $e->getMessage()));
+				if ( $this->has('asf_layout.flash_message') ) {
+					$this->get('asf_layout.flash_message')->danger($this->get('translator')->trans('An error occured when creating an event category: %msg%', array('%msg%' => $e->getMessage())));
+				}
 			}
 		}
 		
@@ -161,5 +164,38 @@ class CalendarEventCategoryController extends Controller
 			'form' => $form->createView(),
 			'cat_event' => $cat_event
 		));
+	}
+	
+	/**
+	 * Delete a category
+	 *
+	 * @param  integer $id           ASFSchedulerBundle:EventCategory Entity ID
+	 * @throws AccessDeniedException If user does not have ACL's rights for delete the category
+	 * @throws \Exception            Error on category not found or on removing element from DB
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
+	 */
+	public function deleteAction($id)
+	{
+		if ( false === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') )
+			throw new AccessDeniedException();
+			
+			$entityManager = $this->get('asf_scheduler.calendar_event_category.manager');
+			$category = $entityManager->getRepository()->findOneBy(array('id' => $id));
+	
+			try {
+				$entityManager->getEntityManager()->remove($category);
+				$entityManager->getEntityManager()->flush();
+					
+				if ( $this->has('asf_layout.flash_message') ) {
+					$this->get('asf_layout.flash_message')->success($this->get('translator')->trans('The category "%name%" successfully deleted', array('%name%' => $category->getTitle()), 'asf_scheduler'));
+				}
+	
+			} catch (\Exception $e) {
+				if ( $this->has('asf_layout.flash_message') ) {
+					$this->get('asf_layout.flash_message')->danger($e->getMessage());
+				}
+			}
+	
+			return $this->redirect($this->get('router')->generate('asf_scheduler_calendar_event_category_list'));
 	}
 }
