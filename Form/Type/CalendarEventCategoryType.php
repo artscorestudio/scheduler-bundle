@@ -53,16 +53,11 @@ class CalendarEventCategoryType extends AbstractType
 			'required' => false
 		))
 		->add('fgColor', TextType::class, array(
-			'label' => 'Forground color',
+			'label' => 'Foreground color',
 			'required' => false
 		))
 		->add('cssClassName', ChoiceType::class, array(
 			'label' => 'CSS class name',
-			'choices' => array(
-				'.event-cat-routes' => 'Routes',
-				'.event-cat-vert' => 'Espaces verts',
-				'.event-cat-repos' => 'Repos'
-			),
 			'required' => false
 		));
 	}
