@@ -9,6 +9,8 @@
  */
 namespace ASF\SchedulerBundle\Twig\Extension;
 
+use Symfony\Component\Routing\RouterInterface;
+
 /**
  * Calendar Extension for generate tinymce init
  * 
@@ -23,11 +25,17 @@ class CalendarExtension extends \Twig_Extension
     protected $assets;
     
     /**
+     * @var RouterInterface
+     */
+    protected $rouoter;
+    
+    /**
      * @param array $assets
      */
-    public function __construct($assets)
+    public function __construct($assets, RouterInterface $router)
     {
         $this->assets = $assets;
+        $this->router = $router;
     }
     
     /**
@@ -51,7 +59,7 @@ class CalendarExtension extends \Twig_Extension
     {
         $config = isset($this->assets['fullcalendar']['config']) ? $this->assets['fullcalendar']['config'] : array();
         $config['eventSources'] = array(array(
-            'url' => "Routing.generate('".$this->assets['fullcalendar']['customize']['load_events_route']."')",
+            'url' => $this->router->generate($this->assets['fullcalendar']['customize']['load_events_route']),
             'type' => 'POST',
             'data' => function(){},
             'error' => function(){}
