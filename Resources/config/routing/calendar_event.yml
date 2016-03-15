@@ -11,3 +11,9 @@ asf_scheduler_calendar_event_edit:
     defaults: { _controller: "ASFSchedulerBundle:CalendarEvent:edit" }
     requirements:
         id: \d+
+        
+asf_scheduler_calendar_event_resize:
+    path: /admin/scheduler/calendar-event/resize
+    defaults: { _controller: "ASFSchedulerBundle:AjaxRequest:eventResize" }
+    options:
+        expose: true
