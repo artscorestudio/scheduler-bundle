@@ -1,0 +1,149 @@
+{# ---------------------------------- Search Form Types ---------------------------- #}
+{% block asf_search_field_widget %}
+{% spaceless %}
+    {{ block('choice_widget') }}
+
+	<script type="text/javascript">
+	(function($, window, document) {
+		$(function() {
+			$('.select2-entity').each(function(){
+				$(this).select2();
+			});
+			$('.select2-entity-ajax').each(function(){
+				$(this).select2({
+					ajax: {
+						url: Routing.generate($(this).attr('data-route')),
+						dataType: 'json',
+						delay: 250,
+						data: function(params) {
+							return {
+								q: params.term,
+								page: params.page
+							};
+						},
+						processResults: function(data, params) {
+							params.page = params.page || 1;
+							return {
+								results: data.items,
+								pagination: {
+									more: (params.page * 30) > data.total_count
+								}
+							};
+						},
+						cache: true
+					},
+					escapeMarkup: function(markup){ return markup; },
+					minimumInputLength: 3,
+					templateResult: function(repo) {
+						if (repo.loading) return repo.text;
+						
+						 var markup = "<div class='select2-result-repository clearfix'>" +
+						 	"<div class='select2-result-repository__title'>" + repo.name + "</div>" +
+						 	"</div>";
+						 
+						 return markup;
+					},
+					templateSelection: function(repo) {
+						return repo.text;
+					}
+				});
+			});
+		});
+	}(window.jQuery, window, document));
+	</script>
+{% endspaceless %}
+{% endblock %}
+
+{% block search_calendar_event_widget %}
+{% spaceless %}
+	{{ block('asf_search_field_widget') }}
+{% endspaceless %}
+{% endblock %}
+
+{% block search_calendar_event_category_widget %}
+{% spaceless %}
+	{{ block('asf_search_field_widget') }}
+{% endspaceless %}
+{% endblock %}
+
+{# ---------------------------------- Calendar Event Form Type ---------------------------- #}
+{% block _calendar_event_errors %}
+{% spaceless %}
+	{{ block('form_errors')  }}
+{% endspaceless %}
+{% endblock %}
+
+{% block _calendar_event_widget %}
+{% spaceless %}
+
+	{{ form_errors(form) }}
+	
+	<div class="row">
+		<div class="col-sm-4">
+			{{ form_row(form.title) }}
+		</div>
+		<div class="col-sm-4">
+			{{ form_row(form.url) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			{{ form_row(form.startedAt) }}
+		</div>
+		<div class="col-sm-4">
+			{{ form_row(form.finishedAt) }}
+		</div>
+		<div class="col-sm-4">
+			{{ form_row(form.isAllDay) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			{{ form_row(form.category) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<input type="submit" value="{{ 'Save'|trans }}" class="btn btn-primary" />
+		</div>
+	</div>
+	
+{% endspaceless %}
+{% endblock %}
+
+{# ---------------------------------- Calendar Event Category Form Type ---------------------------- #}
+{% block _calendar_event_category_errors %}
+{% spaceless %}
+	{{ block('form_errors')  }}
+{% endspaceless %}
+{% endblock %}
+
+{% block _calendar_event_category_widget %}
+{% spaceless %}
+
+	{{ form_errors(form) }}
+	
+	<div class="row">
+		<div class="col-sm-4">
+			{{ form_row(form.title) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			{{ form_row(form.bgColor) }}
+		</div>
+		<div class="col-sm-4">
+			{{ form_row(form.fgColor) }}
+		</div>
+		<div class="col-sm-4">
+			{{ form_row(form.cssClassName) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<input type="submit" value="{{ 'Save'|trans }}" class="btn btn-primary" />
+		</div>
+	</div>
+	
+{% endspaceless %}
+{% endblock %}
