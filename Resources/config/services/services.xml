@@ -24,6 +24,7 @@
 	
         <service id="asf_scheduler.calendar.subscriber" class="%asf_scheduler.calendar.subscriber.class%">
         	<argument type="service" id="asf_scheduler.calendar_event.manager" />
+        	<argument type="service" id="router" />
         	<tag name="kernel.event_subscriber" />
         </service>
         

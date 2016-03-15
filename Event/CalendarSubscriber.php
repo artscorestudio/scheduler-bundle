@@ -11,6 +11,7 @@ namespace ASF\SchedulerBundle\Event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Calendar Subscriber
@@ -26,11 +27,17 @@ class CalendarSubscriber implements EventSubscriberInterface
 	protected $eventEntityManager;
 	
 	/**
+	 * @var RouterInterface
+	 */
+	protected $router;
+	
+	/**
 	 * @param ASFEntityManagerInterface $eventEntityManager
 	 */
-	public function __construct(ASFEntityManagerInterface $eventEntityManager)
+	public function __construct(ASFEntityManagerInterface $eventEntityManager, RouterInterface $router)
 	{
 		$this->eventEntityManager = $eventEntityManager;
+		$this->router = $router;
 	}
 	
 	/**
@@ -64,6 +71,7 @@ class CalendarSubscriber implements EventSubscriberInterface
 		
 		// Create Calendar Events
 		foreach($company_events as $company_event){
+			$company_event->setUrl($this->router->generate('asf_scheduler_calendar_event_edit', array('id' => $company_event->getId())));
 			$calendar_event->addEvent($company_event);
 		}
 	}
