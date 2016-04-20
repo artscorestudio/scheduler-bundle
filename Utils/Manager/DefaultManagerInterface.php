@@ -7,15 +7,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace ASF\SchedulerBundle\Entity\Manager;
+namespace ASF\SchedulerBundle\Utils\Manager;
+
+use ASF\CoreBundle\Utils\Manager\ASFManagerInterface;
 
 /**
- * Scheduler Manager Interface
+ * Generic Manager Interface for this bundle
  * 
  * @author Nicolas Claverie <info@artscore-studio.fr>
  *
  */
-interface ASFSchedulerManagerInterface
+interface DefaultManagerInterface extends ASFManagerInterface
 {
     /**
      * Return the entity class name

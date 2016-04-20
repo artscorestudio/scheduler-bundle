@@ -14,9 +14,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
+use ASF\SchedulerBundle\Utils\Manager\DefaultManagerInterface;
 use ASF\LayoutBundle\Form\Type\DatePickerType;
 
 /**
@@ -28,14 +27,14 @@ use ASF\LayoutBundle\Form\Type\DatePickerType;
 class CalendarEventType extends AbstractType
 {
     /**
-     * @var ASFEntityManagerInterface
+     * @var DefaultManagerInterface
      */
     protected $calendarEventManager;
     
     /**
-     * @param ASFEntityManagerInterface $calendarEventManager
+     * @param DefaultManagerInterface $calendarEventManager
      */
-    public function __construct(ASFEntityManagerInterface $calendarEventManager)
+    public function __construct(DefaultManagerInterface $calendarEventManager)
     {
         $this->calendarEventManager = $calendarEventManager;
     }

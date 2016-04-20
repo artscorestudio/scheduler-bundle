@@ -11,7 +11,7 @@ namespace ASF\SchedulerBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 
-use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
+use ASF\SchedulerBundle\Utils\Manager\DefaultManagerInterface;
 
 /**
  * Transform a string to a Calendar Event Category entity
@@ -22,14 +22,14 @@ use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
 class StringToEventCategoryTransformer implements DataTransformerInterface
 {
 	/**
-	 * @var ASFEntityManagerInterface
+	 * @var DefaultManagerInterface
 	 */
 	protected $eventCategoryManager;
 	
 	/**
-	 * @param ASFEntityManagerInterface $eventManager
+	 * @param DefaultManagerInterface $eventManager
 	 */
-	public function __construct(ASFEntityManagerInterface $eventCategoryManager)
+	public function __construct(DefaultManagerInterface $eventCategoryManager)
 	{
 		$this->eventCategoryManager = $eventCategoryManager;
 	}

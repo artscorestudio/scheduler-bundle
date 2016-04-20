@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use ASF\SchedulerBundle\Form\DataTransformer\StringToEventTransformer;
-use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
+use ASF\SchedulerBundle\Utils\Manager\DefaultManagerInterface;
 
 /**
  * Field for searching calendar event
@@ -26,14 +26,14 @@ use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
 class SearchCalendarEventType extends AbstractType
 {
 	/**
-	 * @var ASFEntityManagerInterface
+	 * @var DefaultManagerInterface
 	 */
 	protected $calendarEventManager;
 	
 	/**
 	 * @param ASFEntityManagerInterface $calendarEventManager
 	 */
-	public function __construct(ASFEntityManagerInterface $calendarEventManager)
+	public function __construct(DefaultManagerInterface $calendarEventManager)
 	{
 		$this->calendarEventManager = $calendarEventManager;
 	}

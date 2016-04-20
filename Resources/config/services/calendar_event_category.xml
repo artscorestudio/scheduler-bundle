@@ -18,7 +18,7 @@
     <services>
         
 		<!-- Entity Manager -->
-        <service id="asf_scheduler.calendar_event_category.manager" class="%asf_scheduler.entity.manager.class%">
+        <service id="asf_scheduler.calendar_event_category.manager" class="%asf_scheduler.default.manager.class%">
             <tag name="asf_core.manager" entity="%asf_scheduler.calendar_event_category.entity.class%" />
         </service>
         

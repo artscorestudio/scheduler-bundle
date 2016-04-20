@@ -10,7 +10,7 @@
 namespace ASF\SchedulerBundle\Event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
+use ASF\SchedulerBundle\Utils\Manager\DefaultManagerInterface;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
@@ -22,7 +22,7 @@ use Symfony\Component\Routing\RouterInterface;
 class CalendarSubscriber implements EventSubscriberInterface
 {
 	/**
-	 * @var ASFEntityManagerInterface
+	 * @var DefaultManagerInterface
 	 */
 	protected $eventEntityManager;
 	
@@ -32,9 +32,9 @@ class CalendarSubscriber implements EventSubscriberInterface
 	protected $router;
 	
 	/**
-	 * @param ASFEntityManagerInterface $eventEntityManager
+	 * @param DefaultManagerInterface $eventEntityManager
 	 */
-	public function __construct(ASFEntityManagerInterface $eventEntityManager, RouterInterface $router)
+	public function __construct(DefaultManagerInterface $eventEntityManager, RouterInterface $router)
 	{
 		$this->eventEntityManager = $eventEntityManager;
 		$this->router = $router;

@@ -15,7 +15,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use ASF\CoreBundle\Model\Manager\ASFEntityManagerInterface;
+
+use ASF\SchedulerBundle\Utils\Manager\DefaultManagerInterface;
 use ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryModel;
 
 /**
@@ -27,14 +28,14 @@ use ASF\SchedulerBundle\Model\CalendarEventCategory\CalendarEventCategoryModel;
 class CalendarEventCategoryType extends AbstractType
 {
     /**
-     * @var ASFEntityManagerInterface
+     * @var DefaultManagerInterface
      */
     protected $entityManager;
    
     /**
-     * @param ASFEntityManagerInterface $entityManager
+     * @param DefaultManagerInterface $entityManager
      */
-    public function __construct(ASFEntityManagerInterface $entityManager)
+    public function __construct(DefaultManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }

@@ -7,7 +7,7 @@
 	<parameters>
 	
 		<!-- Generic Entity Manager -->
-    	<parameter key="asf_scheduler.entity.manager.class">ASF\SchedulerBundle\Entity\Manager\ASFSchedulerEntityManager</parameter>
+    	<parameter key="asf_scheduler.default.manager.class">ASF\SchedulerBundle\Utils\Manager\DefaultManager</parameter>
 
 		<!-- Form Factory -->
 		<parameter key="asf_scheduler.form.factory.class">ASF\SchedulerBundle\Form\Factory\FormFactory</parameter>
